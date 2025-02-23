@@ -1,0 +1,23 @@
+{
+    "name": "tech-magic-test-back",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js",
+        "format": "prettier --write '**/*.{js,jsx,ts,tsx,html,css,json}'"
+    },
+    "private": true,
+    "dependencies": {
+        "bcryptjs": "^3.0.2",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^8.10.1",
+        "node-cron": "^3.0.3",
+        "nodemon": "^3.1.9",
+        "prettier": "^3.5.2"
+    }
+}
