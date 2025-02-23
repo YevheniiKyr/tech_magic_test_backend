@@ -5,7 +5,7 @@ exports.deleteOne = async (req, res, next) => {
     try {
         const user = await User.findByIdAndDelete(req.params.id);
         if (!user) {
-            return res.status(404).json({ message: "User not found" });
+            return res.status(404).json({ message: 'User not found' });
         }
         return res.status(200).json(user);
     } catch (error) {
@@ -27,10 +27,10 @@ exports.update = async (req, res, next) => {
         const updatedUser = await User.findByIdAndUpdate(
             req.params.id,
             req.body,
-            { new: true, runValidators: true }
+            { new: true, runValidators: true },
         );
         if (!updatedUser) {
-            return res.status(404).json({ message: "User not found" });
+            return res.status(404).json({ message: 'User not found' });
         }
         return res.status(200).json(updatedUser);
     } catch (error) {
@@ -42,7 +42,7 @@ exports.getByID = async (req, res, next) => {
     try {
         const user = await User.findById(req.params.id).populate('department expenses');
         if (!user) {
-            return res.status(404).json({ message: "User not found" });
+            return res.status(404).json({ message: 'User not found' });
         }
         return res.status(200).json(user);
     } catch (error) {
@@ -60,8 +60,8 @@ exports.getAll = async (req, res, next) => {
 };
 exports.getExpensesByUser = async (req, res, next) => {
     try {
-        const users = await Expense.findOne({employee: req.params.id});
-        return res.status(200).json(users);
+        const expenses = await Expense.find({ employee: req.params.id }).populate('expenseType department employee');
+        return res.status(200).json(expenses);
     } catch (error) {
         next(error);
     }

@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const generateToken = (user) => {
     return jwt.sign(
-        { id: user._id, email: user.email, role: user.role },
+        { id: user._id, email: user.email, role: user.role, department: user.department },
         process.env.JWT_SECRET,
         { expiresIn: process.env.JWT_EXPIRES_IN }
     );
@@ -13,15 +13,18 @@ const generateToken = (user) => {
 
 exports.register = async (req, res, next) => {
     try {
-        const { email, password, role, firstname, lastname} = req.body;
+        const { email, password, role, firstname, lastname, department} = req.body;
         if (!email || !password) {
             return (res.status(400).json("You didn't input password or email  "))
+        }
+        if (!department) {
+            return (res.status(400).json("You didn't input department "))
         }
         const existingUser = await User.findOne({ email:email });
         if (existingUser) return res.status(400).json({ message: 'Користувач вже існує' });
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = await User.create({ email, password: hashedPassword, role, firstname, lastname });
+        const newUser = await User.create({ email, password: hashedPassword, role, firstname, lastname, department });
 
         const token = generateToken(newUser);
         const userWithoutPassword = { ...newUser._doc };
