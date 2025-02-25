@@ -8,12 +8,12 @@ router.put('/:id', departmentController.update);
 router.delete('/:id', departmentController.deleteOne);
 router.delete('/', departmentController.deleteAll);
 
-router.get('/:id/budget', departmentController.getBudgetsByDepartmentID)
-router.get('/:id/budget', departmentController.getBudgetByID)
-router.put('/:id/budget/:budgetId', departmentController.updateBudget)
-router.post('/:id/budget', departmentController.createBudget)
-router.delete('/:id/budget/:budgetId', departmentController.deleteBudget);
-router.delete('/:id/budget', departmentController.deleteBudgetsByDepartmentID);
+router.get('/:id/budgets', departmentController.getBudgetsByDepartmentID)
+router.get('/:id/budgets/:budgetId', departmentController.getBudgetByID)
+router.put('/:id/budgets/:budgetId', departmentController.updateBudget)
+router.post('/:id/budgets', departmentController.createBudget)
+router.delete('/:id/budgets/:budgetId', departmentController.deleteBudget);
+router.delete('/:id/budgets', departmentController.deleteBudgetsByDepartmentID);
 
 router.get('/:id/expenses', departmentController.getExpensesByDepartment)
 

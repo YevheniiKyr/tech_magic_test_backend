@@ -1,6 +1,6 @@
 const cron = require('node-cron');
 const Department = require('../models/Department');
-const DepartmentBudget= require('../models/DepartmentBudget');
+const DepartmentBudget= require('../models/budget');
 
 const carryOverBudget = async (departmentId) => {
     const now = new Date();

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const DepartmentBudgetSchema = new mongoose.Schema({
+const BudgetSchema = new mongoose.Schema({
     department: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Department',
@@ -13,4 +13,4 @@ const DepartmentBudgetSchema = new mongoose.Schema({
     carriedOverAmount: { type: Number, default: 0 }, // Перенесений залишок
 });
 
-module.exports = mongoose.models.DepartmentBudget || mongoose.model('DepartmentBudget', DepartmentBudgetSchema);
+module.exports = mongoose.models.Budget || mongoose.model('Budget', BudgetSchema);
