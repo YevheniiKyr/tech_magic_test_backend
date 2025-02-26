@@ -34,6 +34,7 @@ class AuthService {
     }
 
     async login(loginUser) {
+
         const user = await User.findOne({ email: loginUser.email });
         if (!user) throw new Error('Invalid credentials');
 

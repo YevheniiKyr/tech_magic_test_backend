@@ -5,7 +5,7 @@ class ExpenseController {
     async create(req, res, next) {
         try {
             const { expenseType, department, employee, sum, date } = req.body;
-            const newExpense = ExpenseService.createExpense({expenseType, department, employee, sum, date})
+            const newExpense = await ExpenseService.createExpense({expenseType, department, employee, sum, date})
             res.status(201).json(newExpense);
         } catch (error) {
             next(error);
